@@ -1,3 +1,4 @@
+const path = require('path');
 /* eslint-disable */
 module.exports = {
   mode: 'production',
@@ -40,5 +41,14 @@ module.exports = {
         exportsPresence: false,
       },
     },
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, '.'),
+    },
+    watchFiles: ['src/**/*.js'],
+    hot: false,
+    port: 9000,
+    open: ['/editor'],
   }
 }

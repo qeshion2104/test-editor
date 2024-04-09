@@ -97,6 +97,7 @@ function addDemo( name, url )
 }
 
 //some examples
+addDemo("Custom Event", "examples/custom/event_listen_dispatch.json");
 addDemo("Features", "examples/features.json");
 addDemo("Benchmark", "examples/benchmark.json");
 addDemo("Subgraph", "examples/subgraph.json");
