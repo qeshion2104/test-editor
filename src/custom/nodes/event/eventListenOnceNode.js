@@ -1,4 +1,5 @@
 import { LiteGraph } from "litegraph.js";
+import { ENGINE_PREFIX } from "../../../const";
 
 //your node constructor class
 export class EventListenOnceNode {
@@ -33,7 +34,7 @@ export class EventListenOnceNode {
       return
     }
     this._isTriggered = true
-    window.addEventListener(event, (e) => {
+    window.addEventListener(`${ENGINE_PREFIX}${event}`, (e) => {
       this.onEvent(e)
       this._isTriggered = false
     }, { once: true });

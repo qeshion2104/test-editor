@@ -1,4 +1,5 @@
 import { LiteGraph } from "litegraph.js";
+import { ENGINE_PREFIX } from "../../../const";
 
 //your node constructor class
 export class EventListenNode {
@@ -27,10 +28,10 @@ export class EventListenNode {
     const event = this.properties["event"]
     if (this.currentEventName !== event) {
       if (this.currentEventName) {
-        window.removeEventListener(this.currentEventName, this.onEvent);
+        window.removeEventListener(`${ENGINE_PREFIX}${this.currentEventName}`, this.onEvent);
       }
       if (event) {
-        window.addEventListener(event, this.onEvent);
+        window.addEventListener(`${ENGINE_PREFIX}${event}`, this.onEvent);
       }
       this.currentEventName = event;
     }

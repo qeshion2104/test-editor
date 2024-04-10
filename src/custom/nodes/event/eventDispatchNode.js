@@ -1,4 +1,5 @@
 import { LiteGraph } from "litegraph.js";
+import { ENGINE_PREFIX } from "../../../const";
 
 //your node constructor class
 export class EventDispatchNode {
@@ -23,7 +24,7 @@ export class EventDispatchNode {
     try {
       const json = typeof data === 'object' ? data : JSON.parse(data);
       this.boxcolor = "#AEA";
-      window.dispatchEvent(new CustomEvent(type, { detail: json }));
+      window.dispatchEvent(new CustomEvent(`${ENGINE_PREFIX}${type}`, { detail: json }));
     } catch (err) {
       console.error(err)
       this.boxcolor = "red";
