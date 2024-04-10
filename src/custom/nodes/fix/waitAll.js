@@ -2,10 +2,10 @@
 
 import { LiteGraph } from "litegraph.js";
 
+// fix first time trigger when one condition pass
 //Sequence of events
 export function WaitAll() {
   var that = this;
-  window['tttt'] = this
   this.addInput("", LiteGraph.ACTION);
   this.addInput("", LiteGraph.ACTION);
   this.addOutput("", LiteGraph.EVENT);
@@ -64,5 +64,3 @@ WaitAll.prototype.reset = function()
 {
   this.ready.length = 0;
 }
-
-LiteGraph.registerNodeType("events/waitAll", WaitAll);    

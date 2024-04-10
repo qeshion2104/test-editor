@@ -46,6 +46,3 @@ export class EventListenOnceNode {
     this.boxcolor = this._isTriggered ? "#FFA" : LiteGraph.NODE_TITLE_COLOR;
   }
 }
-
-//register in the system
-LiteGraph.registerNodeType("custom/eventListenOnce", EventListenOnceNode);

@@ -30,4 +30,3 @@ AddNode.prototype.onExecute = function()
 }
 
 //register in the system
-LiteGraph.registerNodeType("basic/sum", AddNode);

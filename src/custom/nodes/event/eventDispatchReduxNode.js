@@ -1,10 +1,10 @@
 import { LiteGraph } from "litegraph.js";
-import { ENGINE_PREFIX } from "../../../const";
+import { ENGINE_PREFIX, EVENTS } from "../../../const";
 
 //your node constructor class
-export class EventDispatchNode {
-  static title = "Dispatch Event";
-  static desc = `dispatch event to window with prefix: ${ENGINE_PREFIX}`;
+export class EventDispatchReduxNode {
+  static title = "Dispatch Redux Event";
+  static desc = "dispatch event to redux store";
   constructor() {
     this.mode = LiteGraph.ON_TRIGGER
     // type, name, value, options
@@ -15,7 +15,7 @@ export class EventDispatchNode {
     
     this.addProperty("data", "");
     this.addInput("data", "object");
-    this.setSize([160, 50])
+    this.setSize([190, 50])
   }
 
   onExecute() {
@@ -24,7 +24,12 @@ export class EventDispatchNode {
     try {
       const json = typeof data === 'object' ? data : JSON.parse(data);
       this.boxcolor = "#AEA";
-      window.dispatchEvent(new CustomEvent(`${ENGINE_PREFIX}${type}`, { detail: json }));
+      window.dispatchEvent(new CustomEvent(`${ENGINE_PREFIX}${EVENTS.REDUX_EVENT}`, { 
+        detail: {
+          event: type,
+          data: json,
+        }
+      }));
     } catch (err) {
       console.error(err)
       this.boxcolor = "red";

@@ -21,6 +21,3 @@ export class MinusNode {
         this.setOutputData(0, A - B);
     };
 }
-
-//register in the system
-LiteGraph.registerNodeType("basic/minus", MinusNode);

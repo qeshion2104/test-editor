@@ -38,5 +38,3 @@ export class EventListenNode {
   }
 }
 
-//register in the system
-LiteGraph.registerNodeType("custom/eventListen", EventListenNode);

@@ -40,7 +40,17 @@ var elem = document.createElement("span");
 elem.id = "LGEditorTopBarSelector";
 elem.className = "selector";
 elem.innerHTML = "";
-elem.innerHTML += "Demo <select><option>Empty</option></select> <button class='btn' id='save'>Save</button><button class='btn' id='load'>Load</button><button class='btn' id='download'>Download</button> | <button class='btn' id='webgl'>WebGL</button> <button class='btn' id='multiview'>Multiview</button>";
+elem.innerHTML += `Demo 
+<select>
+	<option>Empty</option>
+</select> 
+<button class='btn' id='save'>Save</button>
+<button class='btn' id='load'>Load</button>
+<button class='btn' id='download'>Download</button>
+<button class='btn' id='output'>Output</button>
+ | 
+<button class='btn' id='webgl'>WebGL</button>
+<button class='btn' id='multiview'>Multiview</button>`;
 editor.tools.appendChild(elem);
 var select = elem.querySelector("select");
 select.addEventListener("change", function(e){
@@ -81,6 +91,17 @@ elem.querySelector("#download").addEventListener("click",function(){
 	setTimeout( function(){ URL.revokeObjectURL( url ); }, 1000*60 ); //wait one minute to revoke url	
 });
 
+elem.querySelector("#output").addEventListener("click",function(){
+	var data = JSON.stringify( graph.serialize() );
+	navigator.clipboard.writeText(data)
+		.then(() => {
+			console.log('Data copied to clipboard');
+		})
+		.catch((error) => {
+			console.error('Failed to copy data to clipboard:', error);
+		});
+});
+
 elem.querySelector("#webgl").addEventListener("click", enableWebGL );
 elem.querySelector("#multiview").addEventListener("click", function(){ editor.addMultiview()  } );
 
@@ -97,6 +118,7 @@ function addDemo( name, url )
 }
 
 //some examples
+addDemo("OnplayResponse", "examples/custom/onPlayResponse.json");
 addDemo("Custom Event", "examples/custom/event_listen_dispatch.json");
 addDemo("Features", "examples/features.json");
 addDemo("Benchmark", "examples/benchmark.json");
