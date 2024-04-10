@@ -4,7 +4,7 @@ module.exports = {
   mode: 'production',
   entry: [
     'babel-polyfill',
-    './src/index'
+    './src/editor_index'
   ],
   devtool: 'eval-source-map',
   output: {
